@@ -6,5 +6,30 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Forms</title>
   </head>
-  <body></body>
+  <body>
+    <form>
+      <input type="text" placeholder="Enter your Name">
+      <input type="text" placeholder="Email">
+      <input type="text" placeholder="Password">
+      <button class="btn">sign up</button>
+    </form>
+
+    <script>
+      let input = document.querySelectorAll("input")[0];
+      function validInput (event){
+        if (event.target.value == ""){
+          alert("Name Can't be empty");
+        }
+      }
+      input.addEventListener("click",validInput);
+      let submit = document.querySelector(".btn")
+      function submitValue (event){
+        if (event.target.parentElement.childNodes[0].value == ""){
+          console.log(event.target.parentElement.childNodes[0])
+          alert("invalid input");
+        }
+      }
+      submit.addEventListener("click",submitValue);
+    </script>
+  </body>
 </html>

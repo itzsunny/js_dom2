@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(17, 16, 16);
+    font-family: 'Courier New', Courier, monospace;
+}
+.wrapper {
+    max-width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    margin-top:200px;
+}
+.data {
+    font-size: 50px;
+    height:100px;
+    width:100px;
+     margin:0 auto;  
+     color:#fff;  
+}
+button {
+    margin-top: 40px;
+    padding:10px 20px;
+    width:100px;
+    border-radius: 20%;
+    font-size: 10px;
+    background:rgba(255,255,255,0.2);
+    color:#fff;
+}
+.logo {
+    font-size: 50px;
+    color:#fff;
+   
+}

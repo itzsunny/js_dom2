@@ -29,6 +29,12 @@ function view (arrayToDisplay) {
         btn.innerText = "x";
         btn.className = "btn del";
         btn.setAttribute("data-id", index);
+        if (item.isDone == true ){
+            p.style.textDecoration = "line-through";
+            p.style.color = "rgb(238, 231, 231)";
+        } else {
+            p.style.textDecoration = "none";
+        }
         li.appendChild(check);
         li.appendChild(p);
         li.appendChild(btn);
@@ -85,17 +91,8 @@ function handleSubmit (event){
             document.querySelector('.clear_completed').classList.remove('clearCompleted');
         }
 };
-    function textDecoration (event) {
-        const isChecked_ = todoList.filter(() => event.target.isDone == true).map((p) =>
-            {
-                p.style.textDecoration = "line-through";
-                p.style.color = "rgb(238, 231, 231)";
-                return isChecked_;
-            })
-        }
-
-
-    function active () {
+ 
+   function active () {
         const isActive = todoList.filter((item) => {
             return item.isDone == false;
         })

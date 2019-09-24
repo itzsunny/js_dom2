@@ -34,8 +34,10 @@ function view (arrayToDisplay) {
         li.appendChild(btn);
         ul.appendChild(li);
     });
+    
     item_count.innerText = activeLength();
-    itemsLeft();
+    itemsLeft(); 
+    showClearCompleted (); 
 }
 
 function handleSubmit (event){
@@ -76,13 +78,21 @@ function handleSubmit (event){
         })
         view(isChecked);
 }
-    // function textDecoration (event) {
-    //     const isChecked = todoList.filter((item) => { 
-    //         return (item.isDone == true) ?
-    //         event.target.nextSibling.innerText.style.textDecoration = "line-through" : event.target.nextSibling.innerText.style.textDecoration = "none";
-    //     })
-    //     // return isChecked;
-    // }
+    function showClearCompleted () {
+        if(todoList.some((todo) => todo.isDone==true)) {
+            document.querySelector('.clear_completed').classList.add('clearCompleted');
+        }else{
+            document.querySelector('.clear_completed').classList.remove('clearCompleted');
+        }
+};
+    function textDecoration (event) {
+        const isChecked_ = todoList.filter(() => event.target.isDone == true).map((p) =>
+            {
+                p.style.textDecoration = "line-through";
+                p.style.color = "rgb(238, 231, 231)";
+                return isChecked_;
+            })
+        }
 
 
     function active () {
@@ -95,6 +105,7 @@ function handleSubmit (event){
         const isActive = todoList.filter((item) => {
             return item.isDone == false;
         })
+        
         return isActive.length;
     }
     function all() {
@@ -106,12 +117,13 @@ function handleSubmit (event){
         })
         return isActive.length <= 1 ? item.innerText = "item left" : item.innerText = "items left";
         }
-    function completedAll (){
+    // function completedAll (){
 
-    }
+    // }
+    document.addEventListener('keydown', handleSubmit);
+    document.querySelector('.completed').addEventListener('click',completed);
+    document.querySelector('.active').addEventListener('click',active);
+    document.querySelector('.all').addEventListener("click",all);
 
 
-document.addEventListener("keydown", handleSubmit);
-document.querySelector('.completed').addEventListener('click',completed);
-document.querySelector('.active').addEventListener('click',active);
-document.querySelector('.all').addEventListener("click",all);
+

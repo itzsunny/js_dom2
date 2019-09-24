@@ -47,6 +47,9 @@ h1, h2{
 #book-list, #add-book, #tabbed-content{
     margin: 30px;
 }
+.outline {
+    outline: none;
+}
 
 #book-list ul, #tabbed-content ul{
     list-style-type: none;

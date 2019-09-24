@@ -8,6 +8,10 @@ let completedTodo = document.querySelector(".completed");
 let clearCompletedTodo = document.querySelector(".clear_completed");
 let item_count = document.querySelector('.item_count')
 let item = document.querySelector('.item');
+let allTodo = document.querySelector('.all');
+let allTodo2 = document.querySelector('.all1');
+let selectAllTodo = document.querySelector('i');
+let footer1 = document.querySelector('footer1');
 let todoList = [];
 
 function view (arrayToDisplay) {
@@ -62,10 +66,10 @@ function handleSubmit (event){
 }    
     function deleteSubmit (event) {
         console.log('inside delete',event)
-        var id = event.target.dataset.id
+        var index = event.target.dataset.id
         // if(event.target.classList.contains("del")){
             console.log('inside delete if')
-        todoList.splice(id,1);
+        todoList.splice(index,1);
         // }
         view(todoList);
     }
@@ -73,13 +77,16 @@ function handleSubmit (event){
 
     function handleCheck (event) {
         console.log("handle check",event);
-        id = event.target.dataset.id
+        var id = event.target.dataset.id
         todoList[id].isDone = !todoList[id].isDone;
         view(todoList)
 }
     function completed () {
         console.log('inside complete')
         const isChecked = todoList.filter((item) => {
+            allTodo2.classList.remove('all');
+            activeTodo.classList.remove('active1');
+            completedTodo.classList.add('completed1');
             return item.isDone == true;
         })
         view(isChecked);
@@ -94,6 +101,9 @@ function handleSubmit (event){
  
    function active () {
         const isActive = todoList.filter((item) => {
+            completedTodo.classList.remove('completed1');
+            allTodo2.classList.remove('all');
+            activeTodo.classList.add('active1');
             return item.isDone == false;
         })
         view(isActive);
@@ -106,6 +116,9 @@ function handleSubmit (event){
         return isActive.length;
     }
     function all() {
+        completedTodo.classList.remove('completed1');
+        allTodo2.classList.add('all');
+        activeTodo.classList.remove('active1');
         view(todoList);
     }
     function itemsLeft () {
@@ -114,13 +127,41 @@ function handleSubmit (event){
         })
         return isActive.length <= 1 ? item.innerText = "item left" : item.innerText = "items left";
         }
-    // function completedAll (){
+    function clearCompleted (event) {
+        const isNotComplete = todoList.filter((item) => {
+            selectAllTodo.style.color = "rgb(238, 231, 231)";
+             return item.isDone == false;
+          })
+          todoList = isNotComplete;
+          view(todoList)
+    }
+    function selectAll (event){
+        const falsed = todoList.filter(item => item.isDone == false)
+        console.log(falsed.length); 
+        if(falsed.length == 0){
+            todoList.forEach((item) => {
+                selectAllTodo.style.color = "rgb(238, 231, 231)";
+                return item.isDone = false;
+            })            
+        }
+        else {
+            todoList.forEach((item) => {
+                selectAllTodo.style.color = "#656565";
+                return item.isDone = true;
+            })
+        }
+        
+        console.log('hola');
+        view(todoList);
+    }
 
-    // }
     document.addEventListener('keydown', handleSubmit);
-    document.querySelector('.completed').addEventListener('click',completed);
-    document.querySelector('.active').addEventListener('click',active);
-    document.querySelector('.all').addEventListener("click",all);
+    completedTodo.addEventListener('click',completed);
+    activeTodo.addEventListener('click',active);
+    allTodo.addEventListener("click",all);
+    clearCompletedTodo.addEventListener('click',clearCompleted);
+    selectAllTodo.addEventListener('click',selectAll);
+
 
 
 

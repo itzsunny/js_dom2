@@ -183,7 +183,7 @@ body {
 .clearCompleted {
     display: block;
 }
-.item,.all,.completed,.active,.clear_completed,.item_count{
+.item,.all1,.completed,.active,.clear_completed,.item_count{
     margin:0 0.7rem;
     font-size: 0.9rem;
     padding:0.2rem;
@@ -193,11 +193,26 @@ body {
     cursor: pointer;
     text-decoration: none;
 }
-.all {
+.item1,.completed1,.active1,.clear_completed1{
     border:1px solid #E9D6D8;
-    padding:0.2rem 0.4rem;
     border-radius: 4px;
+}
+
+.all {
+    margin:0 0.7rem;
+    font-size: 0.9rem;
+    padding:0.2rem;
+    border:1px solid #E9D6D8;
+    font-weight: 200;
+    color:#777777;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
    
+}
+.all1:hover {
+    border:1px solid #E9D6D8;
+    border-radius: 4px;
 }
 .completed:hover {
     border:1px solid #E9D6D8;

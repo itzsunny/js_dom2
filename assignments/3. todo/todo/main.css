@@ -130,8 +130,27 @@ body {
     position :relative;
   
 }
+
+.li_list:hover .btn {
+    color:rgb(224, 0, 0);
+}
+.imgContainer {
+    height:1.9rem;
+    width:1.9rem;
+    border-radius: 50%;
+    border: 1px solid rgba(209, 205, 205, 0.5);
+    background:transparent;
+    position: absolute;
+    left:0.6rem;
+}
+.right {
+    width:100%;
+    margin: 0 auto;
+    border-radius: 50%;
+    position: absolute;
+}
 .foot {
-    display: none;
+    display: none; 
 }
 .footer_container {
     display: block;
@@ -146,7 +165,7 @@ body {
     cursor:pointer;
 }
 .btn {
-    color:rgba(212, 207, 207, 0.1);
+    color:rgba(250, 246, 246, 0.1);
     position: absolute;
     right:1rem;
     font-weight: 100;
@@ -154,15 +173,28 @@ body {
     font-size: 2rem;
     cursor: pointer;
 }
-.btn:hover {
-    color:rgb(197, 0, 0);
+.i {
+    width:3%;
+    position: absolute;
+    left:1rem;
+    top:1.4rem;
+    display: none;
 }
+.i_ {
+    width:3%;
+    position: absolute;
+    left:1rem;
+    top:1.5rem;
+    display: inline-block;
+}
+
 .check {
     position: absolute;
     left:1rem;
     height:1rem;
     width:1rem;
     cursor: pointer;
+    display: none;
 }
 .item {
     position: absolute;
@@ -183,7 +215,7 @@ body {
 .clearCompleted {
     display: block;
 }
-.item,.all,.completed,.active,.clear_completed,.item_count{
+.item,.all1,.completed,.active,.clear_completed,.item_count{
     margin:0 0.7rem;
     font-size: 0.9rem;
     padding:0.2rem;
@@ -191,14 +223,26 @@ body {
     font-weight: 200;
     color:#777777;
     cursor: pointer;
+    text-decoration: none;
 }
-.all {
+.item1,.completed1,.active1,.clear_completed1{
     border:1px solid #E9D6D8;
-    padding:0.2rem 0.4rem;
     border-radius: 4px;
+}
+
+.all {
+    margin:0 0.7rem;
+    font-size: 0.9rem;
+    padding:0.2rem;
+    border:1px solid #E9D6D8;
+    font-weight: 200;
+    color:#777777;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
    
 }
-.active:hover {
+.all1:hover {
     border:1px solid #E9D6D8;
     border-radius: 4px;
 }
@@ -206,7 +250,7 @@ body {
     border:1px solid #E9D6D8;
     border-radius: 4px;
 }
-.active:hover {
+ .active:hover {
     border:1px solid #E9D6D8;
     border-radius: 4px;
 }

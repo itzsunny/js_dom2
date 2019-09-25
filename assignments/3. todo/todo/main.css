@@ -173,6 +173,20 @@ body {
     font-size: 2rem;
     cursor: pointer;
 }
+.i {
+    width:3%;
+    position: absolute;
+    left:1rem;
+    top:1.4rem;
+    display: none;
+}
+.i_ {
+    width:3%;
+    position: absolute;
+    left:1rem;
+    top:1.5rem;
+    display: inline-block;
+}
 
 .check {
     position: absolute;

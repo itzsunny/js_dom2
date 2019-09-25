@@ -10,7 +10,7 @@ let item_count = document.querySelector('.item_count')
 let item = document.querySelector('.item');
 let allTodo = document.querySelector('.all');
 let allTodo2 = document.querySelector('.all1');
-let selectAllTodo = document.querySelector('i');
+let selectAllTodo = document.querySelector('.i');
 var newlabel = document.createElement("Label");
 let footer1 = document.querySelector('footer1');
 todoList =[];
@@ -74,7 +74,8 @@ function handleSubmit (event){
         todoText.text = input.value;
         todoList.push(todoText);
         console.log(todoList);
-        document.querySelector(".input_container .fas").classList.add("fa-chevron-down");
+        document.querySelector(".input_container .i").classList.add("i_");
+        document.querySelector(".input_container .i").style.opacity = 0.2;
         document.querySelector(".foot").classList.add("footer_container");
         event.target.value = "";
         view(todoList);
@@ -148,7 +149,7 @@ function handleSubmit (event){
         }
     function clearCompleted (event) {
         const isNotComplete = todoList.filter((item) => {
-            selectAllTodo.style.color = "rgb(238, 231, 231)";
+            selectAllTodo.style.opacity = 0.2;
              return item.isDone == false;
           })
           todoList = isNotComplete;
@@ -159,13 +160,13 @@ function handleSubmit (event){
         console.log(falsed.length); 
         if(falsed.length == 0){
             todoList.forEach((item) => {
-                selectAllTodo.style.color = "rgb(238, 231, 231)";
+                selectAllTodo.style.opacity = 0.2;
                 return item.isDone = false;
             })            
         }
         else {
             todoList.forEach((item) => {
-                selectAllTodo.style.color = "#656565";
+                selectAllTodo.style.opacity = 0.8;
                 return item.isDone = true;
             })
         }

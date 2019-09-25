@@ -13,6 +13,7 @@ let allTodo2 = document.querySelector('.all1');
 let selectAllTodo = document.querySelector('i');
 let footer1 = document.querySelector('footer1');
 let todoList = [];
+// let todoList = JSON.parse(localStorage.getItem('todo-list')) || []
 
 function view (arrayToDisplay) {
     ul.innerHTML = '';
@@ -48,6 +49,7 @@ function view (arrayToDisplay) {
     item_count.innerText = activeLength();
     itemsLeft(); 
     showClearCompleted (); 
+    localStorage.setItem('todo-list', JSON.stringify(todoList));
 }
 
 function handleSubmit (event){
@@ -72,6 +74,7 @@ function handleSubmit (event){
         todoList.splice(index,1);
         // }
         view(todoList);
+
     }
     
 
@@ -80,6 +83,7 @@ function handleSubmit (event){
         var id = event.target.dataset.id
         todoList[id].isDone = !todoList[id].isDone;
         view(todoList)
+
 }
     function completed () {
         console.log('inside complete')
@@ -154,6 +158,8 @@ function handleSubmit (event){
         console.log('hola');
         view(todoList);
     }
+
+    view(todoList);
 
     document.addEventListener('keydown', handleSubmit);
     completedTodo.addEventListener('click',completed);

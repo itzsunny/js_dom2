@@ -4,51 +4,47 @@ add.className = "add";
 const ul = document.querySelector("ul");
 const searchBar = document.querySelector('.outline');
 hide = document.querySelector('#hide');
-var bookList = [];
-function render (arrList){
-    ul.innerHTML = "";
+var bookList = JSON.parse(localStorage.getItem('book-list')) || [];
 
+function displayBooks (arrList) {
+    ul.innerHTML = "";
     arrList.forEach(book => {
         let li = document.createElement('li');
         li.textContent = book;
         ul.appendChild(li);
     });
-}
-
-function search (event){
-    let query = event.target.value.trim();
-    
-    let searchResults = bookList.filter(book => {
-        return book.startsWith(query);
-    });
-    console.log(searchResults);
-    render(searchResults);
+    localStorage.setItem('book-list',JSON.stringify(bookList));
 }
 
  function enterBooks (event){
      if (event.keyCode === 13 && event.target.value.trim() != "" ) {
          console.log(event.target.value, "inside...")
-         book = event.target.value ;
+         book = (event.target.value).toLowerCase();
          bookList.push(book);
-            isDone = hide.checked;
-         if (isDone == true) {
-            ul.style.display = "none";
-         } else {
-            ul.style.display = "block";
+         event.target.value = ""; 
+         displayBooks(bookList);
          }
-         event.target.value = "";
-         console.log(bookList);
+        console.log(bookList);
         
      }
- }
+
  function addBooks (event) {
     if (event.target.previousElementSibling.value.trim() != "") {
-        book = event.target.previousElementSibling.value;
+        book = (event.target.previousElementSibling.value).toLowerCase();
         bookList.push(book);
-       
         event.target.previousElementSibling.value = "";
         console.log(bookList);
+        displayBooks(bookList);
+         }
     }
+
+function search (event) {
+    let query = (event.target.value.trim()).toLowerCase();
+    let searchResults = bookList.filter(book => {
+        return book.includes(query)
+    });
+    console.log(searchResults);
+    displayBooks(searchResults);
 }
 function check (event) {
     
@@ -58,9 +54,12 @@ function check (event) {
     ul.style.display = "block";
 }
 }
+displayBooks(bookList);
+
 
 input.addEventListener('keydown',enterBooks);
 add.addEventListener('click',addBooks);
 searchBar.addEventListener('keydown',search);
 hide.addEventListener('click',check);
+
 

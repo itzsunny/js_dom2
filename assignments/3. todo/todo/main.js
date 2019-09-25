@@ -49,7 +49,7 @@ function view (arrayToDisplay) {
     item_count.innerText = activeLength();
     itemsLeft(); 
     showClearCompleted (); 
-    localStorage.setItem('todo-list', JSON.stringify(todoList));
+    // localStorage.setItem('todo-list', JSON.stringify(todoList));
 }
 
 function handleSubmit (event){
@@ -159,7 +159,7 @@ function handleSubmit (event){
         view(todoList);
     }
 
-    view(todoList);
+    // view(todoList);
 
     document.addEventListener('keydown', handleSubmit);
     completedTodo.addEventListener('click',completed);

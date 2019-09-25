@@ -41,7 +41,7 @@ function displayBooks (arrList) {
 function search (event) {
     let query = (event.target.value.trim()).toLowerCase();
     let searchResults = bookList.filter(book => {
-        return book.includes(query)
+        return book.includes(query);
     });
     console.log(searchResults);
     displayBooks(searchResults);

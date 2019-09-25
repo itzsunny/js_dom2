@@ -11,9 +11,10 @@ let item = document.querySelector('.item');
 let allTodo = document.querySelector('.all');
 let allTodo2 = document.querySelector('.all1');
 let selectAllTodo = document.querySelector('i');
+var newlabel = document.createElement("Label");
 let footer1 = document.querySelector('footer1');
-let todoList = [];
-// let todoList = JSON.parse(localStorage.getItem('todo-list')) || []
+todoList =[];
+// let todoList = JSON.parse(localStorage.getItem('todo-list')) || [];
 
 function view (arrayToDisplay) {
     ul.innerHTML = '';
@@ -24,7 +25,18 @@ function view (arrayToDisplay) {
         const check = document.createElement("input");
         check.type = "checkbox";
         check.setAttribute("data-id", index);
+        check.id = 'right-'+index;
         check.className = "check";
+        const newLabel = document.createElement("Label");
+        newLabel.setAttribute("for",'right-'+index);
+        imgContainer = document.createElement("div");
+        imgContainer.className = 'imgContainer';
+        img = document.createElement('img');
+        img.className = 'right';
+        img.src = 'chk.png';
+        imgContainer.appendChild(img);
+        newLabel.appendChild(imgContainer);
+        li.appendChild(newLabel);
         check.checked = item.isDone;
         check.addEventListener("click", handleCheck);
         const p = document.createElement("p");
@@ -35,9 +47,12 @@ function view (arrayToDisplay) {
         btn.className = "btn del";
         btn.setAttribute("data-id", index);
         if (item.isDone == true ){
+            img.style.opacity = "1";
+            imgContainer.style.border = "none";
             p.style.textDecoration = "line-through";
             p.style.color = "rgb(238, 231, 231)";
         } else {
+            img.style.opacity = "0";
             p.style.textDecoration = "none";
         }
         li.appendChild(check);
